@@ -106,17 +106,6 @@
         android:text="CONSULTER"
         android:textSize="18sp"
         android:padding="15dp"
-
-
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/result"
-        android:text="..."
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="30sp"
         />
 
 

@@ -25,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
                 Log.i("Information", "button cliqué");
                 Intent intent = new Intent(HomeActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

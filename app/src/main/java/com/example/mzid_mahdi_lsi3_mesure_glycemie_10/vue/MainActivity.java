@@ -1,8 +1,12 @@
 package com.example.mzid_mahdi_lsi3_mesure_glycemie_10.vue;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mzid_mahdi_lsi3_mesure_glycemie_10.R;
 import com.example.mzid_mahdi_lsi3_mesure_glycemie_10.controller.Controller;
+
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,8 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int APPEL_ACTIVITY_B = 1;
     private EditText etValeur;
-    private TextView tvAge, tvReponse;
+    private TextView tvAge;
     private SeekBar sbAge;
     private RadioButton rbIsFasting, rbIsNotFasting;
     private Button btnConsulter;
@@ -63,10 +68,26 @@ public class MainActivity extends AppCompatActivity {
                     //Flèche "User action" Vue --> Controller
                     controller.createPatient(age, valeurMesuree, rbIsFasting.isChecked());
                     //Flèche "Update" Controller --> vue
-                    tvReponse.setText(controller.getReponse());
+                    String Reponse = controller.getReponse();
+
+                    Intent intent = new Intent(MainActivity.this, ConsultActivity.class);
+                    intent.putExtra("result", Reponse);
+                    //noinspection deprecation
+                    startActivityForResult(intent, APPEL_ACTIVITY_B);
+                    }
                 }
+            });
+        }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        MainActivity.super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == APPEL_ACTIVITY_B) {
+            if (resultCode == Activity.RESULT_CANCELED) {
+                // Afficher un <link>Toast</link> d'erreur
+                Toast.makeText(MainActivity.this, "Opération annulée", Toast.LENGTH_SHORT).show();
             }
-        });
+        }
     }
     private void init() {
         sbAge = findViewById(R.id.sbAge);
@@ -75,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
         rbIsFasting = findViewById(R.id.rbtOui);
         rbIsNotFasting = findViewById(R.id.rbtNon);
         btnConsulter = findViewById(R.id.buttonConsult);
-        tvReponse = findViewById(R.id.result);
 
 
     }
