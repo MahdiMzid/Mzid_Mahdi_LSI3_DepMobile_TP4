@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private SeekBar sbAge;
     private RadioButton rbIsFasting, rbIsNotFasting;
     private Button btnConsulter;
-    //private Controller controller = Controller.getInstance();
     private Controller controller = Controller.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
