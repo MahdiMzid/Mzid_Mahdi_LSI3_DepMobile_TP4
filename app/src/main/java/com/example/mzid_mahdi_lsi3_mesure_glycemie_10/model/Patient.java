@@ -1,4 +1,4 @@
-package com.example.mzid_mahdi_mesure_glycemie_10.model;
+package com.example.mzid_mahdi_lsi3_mesure_glycemie_10.model;
 public class Patient {
     private int age;
     private float valeurMesuree;

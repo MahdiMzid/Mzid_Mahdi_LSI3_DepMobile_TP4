@@ -1,4 +1,4 @@
-package com.example.mzid_mahdi_mesure_glycemie_10;
+package com.example.mzid_mahdi_lsi3_mesure_glycemie_10;
 
 import android.content.Context;
 
